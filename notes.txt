@@ -6,22 +6,67 @@
 
 Nouns for classes
 ----------------------------------------------------
-Players
-- state: name, score
+Player 
+  - state: name, lives
+  - initialize() 
+    self.lives = 3
+  - name
+  - lives 
+  - method - lose_life
+  - method - lost
 
 
-GameTracker
-- method: UpdateScores
-  - checks score after every turn
-- method: CurrentPlayer
-  - tracks the players and whos turn it is so it can print the question and player
-- method: AnswerValidation
-  - checks answer, calls method to update score, sends AnswerResponse
-- method: GameStatus
- - New Turn, Game Over
+Question 
+  - initialize() => randomly create two numbers for self
+  - number_left
+  - number_right
+  + correct_answer?(answer)
+  + to_s => number_left + " + " + number_right
 
-Questions
-- method: QuestionGenerator, RandomNumber (between 1 - 20)
+  My additional Notes:
+  - method: RandomNumber (between 1 - 20)
+  - method: QuestionGenerator
+  - method: create question
+
+Game
+  - player1:Player
+  - player2:Player
+  + start/run 
+    
+    loop do 
+      current_player = select_other_player(current_player)
+      Turn.new(current_player).run
+    end
+
+  My additional Notes:
+  - method: UpdateScores
+    - checks score after every turn
+  - method: current_player
+    - tracks the players and whos turn it is so it can print the question and player
+  - method: correct_answer?
+    - checks answer, calls method to update score, sends AnswerResponse
+  - method: lost
+  - New Turn, Game Over
+
+Turn 
+  - player:Player
+  + run
+      question = ask_question 
+        question = Question.new
+        puts question
+        question
+      answer = prompt_answer
+      if question.correct_answer?(answer)
+        puts "YAY"
+        player.add_point
+      else
+        player.lose_life
+        puts "NAY"
+      end
+      if player.lost?
+        puts "You lose!"
+        break
+      end
 
 review the branches exercise
 will require the get.chomps method to get input and puts for output
