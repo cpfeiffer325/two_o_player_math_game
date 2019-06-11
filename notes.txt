@@ -1,0 +1,28 @@
+- Both players start with 3 lives
+- They lose a life if they mis an answer
+- At the end of the turn output the new scores for each players
+- Game doesn't end until a player loses all their lives
+- At this point a winner should be announced
+
+Nouns for classes
+----------------------------------------------------
+Players
+- state: name, score
+
+
+GameTracker
+- method: UpdateScores
+  - checks score after every turn
+- method: CurrentPlayer
+  - tracks the players and whos turn it is so it can print the question and player
+- method: AnswerValidation
+  - checks answer, calls method to update score, sends AnswerResponse
+- method: GameStatus
+ - New Turn, Game Over
+
+Questions
+- method: QuestionGenerator, RandomNumber (between 1 - 20)
+
+review the branches exercise
+will require the get.chomps method to get input and puts for output
+Use puts, raise some_val.inspect, and byebug to help with debugging
