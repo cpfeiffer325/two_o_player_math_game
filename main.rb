@@ -1,14 +1,14 @@
-require 'pry'
-require './players'
 require './game'
-require './questions'
+require './interface'
+require './player'
+require './question'
 
 # Test code
 
-
-
-
-
-binding.pry
-
+new_game = Game.new({
+  player_controller: Player,
+  question_controller: Question, 
+  interface: Interface
+})
+new_game.play()
 
